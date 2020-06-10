@@ -1,6 +1,4 @@
-# Better Way Lighting
-
-## CineBulb Wifi Manager
+# React Template
 
 #### Requirements
 
