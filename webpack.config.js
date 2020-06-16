@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
 	mode: 'development',
-	entry: './src/index.js',
+	entry: './index.js',
 	plugins: [
 		new EnvironmentPlugin({
 			NODE_ENV: 'development',
@@ -29,7 +29,7 @@ module.exports = {
 				removeComments: true,
 			},
 			template: HtmlWebpackTemplate,
-			title: 'CineBulb Wifi Manager',
+			title: 'CBSK React Template',
 		}),
 	],
 	devtool: 'inline-source-map',
@@ -45,8 +45,8 @@ module.exports = {
 		rules: [
 			{
 				test: /\.(js|jsx)$/,
-				exclude: /node_modules/,
-				use: ['babel-loader']
+				exclude: path.resolve(__dirname, 'node_modules'),
+				loader: 'babel-loader'
 			},
 			{
 				test: /\.css$/,
@@ -65,9 +65,6 @@ module.exports = {
 	resolve: {
 		symlinks: false,
 		extensions: ['*', '.js', '.jsx', '.less'],
-		alias: {
-			assets: path.resolve(__dirname, 'src/assets'),
-		}
 	},
 	devServer: {
 		contentBase: './dist',

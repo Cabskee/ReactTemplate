@@ -8,20 +8,18 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-	mode: 'development',
-	entry: {
-		app: './index.js'
-	},
+	mode: 'production',
+	entry: './index.js',
 	plugins: [
 		new EnvironmentPlugin({
-			NODE_ENV: 'development',
+			NODE_ENV: 'production',
 		}),
 		new MiniCssExtractPlugin({
 			filename: '[name].[contenthash].css'
 		}),
 		new HtmlWebpackPlugin({
 			appMountId: 'app',
-			favicon: 'src/assets/favicon.png',
+			// favicon: 'src/assets/favicon.png',
 			hash: true,
 			meta: {
 				viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
@@ -33,10 +31,9 @@ module.exports = {
 				removeComments: true,
 			},
 			template: HtmlWebpackTemplate,
-			title: 'CineBulb Wifi Manager',
+			title: 'CBSK React Template',
 		}),
 	],
-	devtool: 'inline-source-map',
 	output: {
 		filename: '[name].[contenthash].bundle.js',
 		path: path.join(__dirname, '/dist'),
@@ -54,19 +51,19 @@ module.exports = {
 				},
 				extractComments: false
 			}),
-			new OptimizeCSSAssetsPlugin({})
+			new OptimizeCSSAssetsPlugin()
 		]
 	},
 	module: {
 		rules: [
 			{
 				test: /\.(js|jsx)$/,
-				exclude: /node_modules/,
-				use: ['babel-loader']
+				exclude: path.resolve(__dirname, 'node_modules'),
+				loader: 'babel-loader'
 			},
 			{
 				test: /\.css$/,
-				use: [ MiniCssExtractPlugin.loader, 'css-loader' ]
+				use: [MiniCssExtractPlugin.loader, 'css-loader']
 			},
 			{
 				test: /\.(png|svg|jpg|gif)$/,
@@ -81,13 +78,5 @@ module.exports = {
 	resolve: {
 		symlinks: false,
 		extensions: ['*', '.js', '.jsx', '.less'],
-		alias: {
-			assets: path.resolve(__dirname, 'src/assets'),
-		}
-	},
-	devServer: {
-		contentBase: './dist',
-		historyApiFallback: true,
-		port: 9000
 	}
 };

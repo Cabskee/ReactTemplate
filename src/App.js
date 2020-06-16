@@ -2,6 +2,6 @@ import React from 'react';
 
 export default () => {
 	return (
-		<div>Test</div>
+		<div>Welcome to the CBSK React Template!</div>
 	);
 };

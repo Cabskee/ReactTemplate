@@ -1,5 +1,5 @@
 // Polyfills
-import 'core-js/stable';
+import 'core-js/stable/promise';
 import 'regenerator-runtime/runtime';
 
 // React
@@ -10,5 +10,5 @@ import {render} from 'react-dom';
 import 'normalize.css';
 
 // Add app to DOM
-import App from './App';
+import App from './src/App';
 render(<App />, document.getElementById('app'));
