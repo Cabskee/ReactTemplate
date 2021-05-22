@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackTemplate = require('html-webpack-template');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserJSPlugin = require('terser-webpack-plugin');
 
 module.exports = {
 	mode: 'production',
@@ -42,15 +41,6 @@ module.exports = {
 	optimization: {
 		minimize: true,
 		minimizer: [
-			new TerserJSPlugin({
-				sourceMap: false,
-				terserOptions: {
-					output: {
-						comments: false
-					}
-				},
-				extractComments: false
-			}),
 			new OptimizeCSSAssetsPlugin()
 		]
 	},
