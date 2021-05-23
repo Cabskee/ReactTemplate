@@ -32,7 +32,7 @@ module.exports = {
 			title: 'CBSK React Template',
 		}),
 	],
-	// devtool: 'inline-source-map',
+	devtool: 'inline-source-map',
 	output: {
 		filename: '[name].[contenthash].bundle.js',
 		path: path.join(__dirname, '/dist'),
